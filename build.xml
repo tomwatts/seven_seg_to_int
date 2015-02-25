@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project basedir="." default="build" name="SevenSegToInt">
+
+	<property name="srcdir" value="./src"/>
+	<property name="classdir" value="./class"/>
+
+	<target name="build">
+		<mkdir dir="${classdir}"/>
+		<javac srcdir="${srcdir}."
+			destdir="${classdir}"
+		/>
+	</target>
+
+	<target name="test" depends="build">
+		<junit>
+			<formatter type="plain" usefile="false"/>
+			<classpath>
+				<pathelement path="${classdir}"/>
+			</classpath>
+			<batchtest>
+				<fileset dir="${classdir}">
+					<include name="*Test.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="clean">
+		<delete dir="${classdir}"/>
+	</target>
+
+</project>
+
