@@ -23,13 +23,115 @@ public class SevenSegToIntTest {
 	}
 
 	@Test
-	public void SevenSegStringToInt_StringOne_IntOneReturned() {
-		assertEquals(1, SevenSegToInt.SevenSegStringToInt("   \n  |\n  |"), 0);
+	public void SevenSegStringToInt_NullInput_NegativeOneReturned() {
+
+		// Arrange
+		String n = null;
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(-1, actual, 0);
+
 	}
 
 	@Test
-	public void SevenSegStringToInt_StringTwelve_IntTwelveReturned() {
-		assertEquals(12, SevenSegToInt.SevenSegStringToInt("    _ \n   | _|\n  ||_ "), 0);
+	public void SevenSegStringToInt_NotEnoughLines_NegativeOneReturned() {
+
+		// Arrange
+		String n = "   \n  |";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(-1, actual, 0);
+
+	}
+
+	@Test
+	public void SevenSegStringToInt_ThreeLinesWithTwoCharacters_NegativeOneReturned() {
+
+		// Arrange
+		String n =
+			"  \n" +
+			" |\n" +
+			" |";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(-1, actual, 0);
+
+	}
+
+	@Test
+	public void SevenSegStringToInt_InvalidDigits_NegativeOneReturned() {
+
+		// Arrange
+		String n =
+			"    _  _     _  _  _  _  _ \n" +
+			"  | _| _||_||_ |_ |  |_||_|\n" +
+			"  ||_  _|  | _||_||  |_| _|";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(-1, actual, 0);
+
+	}
+
+	@Test
+	public void SevenSegStringToInt_String1_Int1Returned() {
+
+		// Arrange
+		String n =
+			"   \n" +
+			"  |\n" +
+			"  |";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(1, actual, 0);
+	}
+
+	@Test
+	public void SevenSegStringToInt_String12_Int12Returned() {
+
+		// Arrange
+		String n = 
+			"    _ \n" +
+			"  | _|\n" +
+			"  ||_ ";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(12, actual, 0);
+
+	}
+
+	@Test
+	public void SevenSegStringToInt_String123456789_Int123456789Returned() {
+
+		// Arrange
+		String n =
+			"    _  _     _  _  _  _  _ \n" +
+			"  | _| _||_||_ |_   ||_||_|\n" +
+			"  ||_  _|  | _||_|  ||_| _|";
+
+		// Act
+		int actual = SevenSegToInt.SevenSegStringToInt(n);
+
+		// Assert
+		assertEquals(123456789, actual, 0);
+
 	}
 }
 
