@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-public class SevenSegToInt {
-
+public class SevenSegToInt
+{
 	private static Hashtable<String, Integer> sevenSegInts;
 
-	public static Hashtable<String, Integer> getSevenSegInts() {
-
-		if(sevenSegInts == null) {
+	public static Hashtable<String, Integer> getSevenSegInts()
+	{
+		if(sevenSegInts == null)
+		{
 			sevenSegInts = new Hashtable<String, Integer>();
 			sevenSegInts.put(" _ | ||_|", 0);
 			sevenSegInts.put("     |  |", 1);
@@ -38,21 +39,26 @@ public class SevenSegToInt {
 	 * @return		an integer representation of the passed number, -1 on invalid
 	 * 				input.
 	 */
-	public static int SevenSegStringToInt(String n) {
-
-		if(n == null) {
+	public static int SevenSegStringToInt(String n)
+	{
+		if(n == null)
+		{
 			return -1;
 		}
 
 		String[] lines = n.split("\n");
 
 		// Check the format of the string passed
-		if(lines.length != 3) {
+		if(lines.length != 3)
+		{
 			return -1;
 		}
-		else {
-			for(int i = 0; i < 3; i++) {
-				if(lines[i].length() % 3 != 0) {
+		else
+		{
+			for(int i = 0; i < 3; i++)
+			{
+				if(lines[i].length() % 3 != 0)
+				{
 					return -1;
 				}
 			}
@@ -60,7 +66,8 @@ public class SevenSegToInt {
 
 		int result = 0;
 
-		for(int i = 0; i < lines[0].length() / 3; i++) {
+		for(int i = 0; i < lines[0].length() / 3; i++)
+		{
 			int startIndex = i * 3;
 			int endIndex = i * 3 + 3;
 
@@ -69,7 +76,8 @@ public class SevenSegToInt {
 				lines[1].substring(startIndex, endIndex) +
 				lines[2].substring(startIndex, endIndex);
 
-			if(!getSevenSegInts().containsKey(digit)) {
+			if(!getSevenSegInts().containsKey(digit))
+			{
 				return -1;
 			}
 			
@@ -80,31 +88,35 @@ public class SevenSegToInt {
 		return result;
 	}
 
-	public static void main(String[] args) throws IOException {
-		if(args.length != 1) {
+	public static void main(String[] args) throws IOException
+	{
+		if(args.length != 1)
+		{
 			System.err.println("Error: no input file provided");
 			System.exit(1);
 		}
 
 		File inFile = new File(args[0]);
 
-		if(!inFile.exists()) {
+		if(!inFile.exists())
+		{
 			System.err.println("Error: input file does not exist");
 			System.exit(1);
 		}
 
 		BufferedReader inFileReader = new BufferedReader(new FileReader(inFile));
 
-		try {
-			
-			/*String line;
-			while((line = inFileReader.readLine()).matches("[_|]+"))	{
+		try
+		{
+			String line;
+			//while((line = inFileReader.readLine()) != null)
+			while((line = inFileReader.readLine()).matches("\\s+"))
+			{
 				System.out.println(line);
-
 			}
-*/
 		}
-		finally {
+		finally
+		{
 			inFileReader.close();
 		}
 

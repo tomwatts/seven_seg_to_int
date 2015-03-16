@@ -1,15 +1,17 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class SevenSegToIntTest {
-
+public class SevenSegToIntTest
+{
 	@Test
-	public void sevenSegInts_Size_IsTen() {
+	public void sevenSegInts_Size_IsTen()
+	{
 		assertEquals(10, SevenSegToInt.getSevenSegInts().size(), 0);
 	}
 
 	@Test
-	public void sevenSegInts_KeyProvided_ExpectedIntReturned() {
+	public void sevenSegInts_KeyProvided_ExpectedIntReturned()
+	{
 		assertEquals(0, SevenSegToInt.getSevenSegInts().get(" _ | ||_|"), 0);
 		assertEquals(1, SevenSegToInt.getSevenSegInts().get("     |  |"), 0);
 		assertEquals(2, SevenSegToInt.getSevenSegInts().get(" _  _||_ "), 0);
@@ -23,8 +25,8 @@ public class SevenSegToIntTest {
 	}
 
 	@Test
-	public void SevenSegStringToInt_NullInput_NegativeOneReturned() {
-
+	public void SevenSegStringToInt_NullInput_NegativeOneReturned()
+	{
 		// Arrange
 		String n = null;
 
@@ -33,12 +35,11 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(-1, actual, 0);
-
 	}
 
 	@Test
-	public void SevenSegStringToInt_NotEnoughLines_NegativeOneReturned() {
-
+	public void SevenSegStringToInt_NotEnoughLines_NegativeOneReturned()
+	{
 		// Arrange
 		String n = "   \n  |";
 
@@ -47,12 +48,11 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(-1, actual, 0);
-
 	}
 
 	@Test
-	public void SevenSegStringToInt_ThreeLinesWithTwoCharacters_NegativeOneReturned() {
-
+	public void SevenSegStringToInt_ThreeLinesWithTwoCharacters_NegativeOneReturned()
+	{
 		// Arrange
 		String n =
 			"  \n" +
@@ -64,12 +64,11 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(-1, actual, 0);
-
 	}
 
 	@Test
-	public void SevenSegStringToInt_InvalidDigits_NegativeOneReturned() {
-
+	public void SevenSegStringToInt_InvalidDigits_NegativeOneReturned()
+	{
 		// Arrange
 		String n =
 			"    _  _     _  _  _  _  _ \n" +
@@ -81,12 +80,11 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(-1, actual, 0);
-
 	}
 
 	@Test
-	public void SevenSegStringToInt_String1_Int1Returned() {
-
+	public void SevenSegStringToInt_String1_Int1Returned()
+	{
 		// Arrange
 		String n =
 			"   \n" +
@@ -101,8 +99,8 @@ public class SevenSegToIntTest {
 	}
 
 	@Test
-	public void SevenSegStringToInt_String12_Int12Returned() {
-
+	public void SevenSegStringToInt_String12_Int12Returned()
+	{
 		// Arrange
 		String n = 
 			"    _ \n" +
@@ -114,12 +112,11 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(12, actual, 0);
-
 	}
 
 	@Test
-	public void SevenSegStringToInt_String123456789_Int123456789Returned() {
-
+	public void SevenSegStringToInt_String123456789_Int123456789Returned()
+	{
 		// Arrange
 		String n =
 			"    _  _     _  _  _  _  _ \n" +
@@ -131,7 +128,6 @@ public class SevenSegToIntTest {
 
 		// Assert
 		assertEquals(123456789, actual, 0);
-
 	}
 }
 
